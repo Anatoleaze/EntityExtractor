@@ -25,5 +25,5 @@ def resultats():
             if file and file.filename != '':
                 file.save(os.path.join(file.filename))
             prog.getContentFile(file.filename)
-    html=prog.analyseText()
+    html=""#prog.analyseText()
     return render_template("resultat.html", recap=prog.getTypesEntity(html),texte=html)
