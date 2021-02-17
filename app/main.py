@@ -23,10 +23,7 @@ def resultats():
          if 'file' in request.files:
             file = request.files['file']
             if file and file.filename != '':
-                file.save(os.path.join("file",file.filename))
-                print()
-                print(os.path.join("file",file.filename))
-                print()
-            prog.getContentFile("file/"+file.filename)
+                file.save(os.path.join(file.filename))
+            prog.getContentFile(file.filename)
     html=prog.analyseText()
     return render_template("resultat.html", recap=prog.getTypesEntity(html),texte=html)
