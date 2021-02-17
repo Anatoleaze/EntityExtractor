@@ -24,6 +24,9 @@ def resultats():
             file = request.files['file']
             if file and file.filename != '':
                 file.save(os.path.join("file",file.filename))
+                print()
+                print(os.path.join("file",file.filename))
+                print()
             prog.getContentFile("file/"+file.filename)
     html=prog.analyseText()
     return render_template("resultat.html", recap=prog.getTypesEntity(html),texte=html)
