@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Entity Extractor</title>
+  <link href="{{ url_for('static', filename='img/favicon.png') }}" rel="icon">
+  <link href="https://fonts.googleapis.com/css?family=OSpen+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/aos.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+  <style media="screen">
+    .input{
+      margin-bottom: 30px;
+      border: 1px solid rgba(12,13,13,.25) !important;
+      margin-top: 24px;
+    }
+
+    textarea{
+      margin-top: 15px;
+      margin-bottom: 35px;
+      border: 1px solid black;
+      border-radius: 9px;
+      padding: 5px 20px;
+      margin-left: 5%;
+    }
+
+    label{
+      margin-left: 15px;
+    }
+
+    li{
+      margin-left:23px;
+    }
+
+    .msg{
+      background-color:#dc3545;
+      color:white;
+      border-radius: 7px;
+      width: 30%;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      margin-left: 33%;
+    }
+    .login-wrap{
+      margin:auto;
+      max-width:640px;
+      min-height:400px;
+      position:relative;
+      box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
+      border-radius: 30px;
+      margin-top: 35px;
+    }
+
+    .login-html{
+      width:100%;
+      position:absolute;
+      padding:65px;
+      padding-top:28px;
+    }
+
+    .login-html .for-file-htm,
+    .login-html .for-pwd-htm,
+    .login-html .for-url-htm{
+      top:0;
+      left:0;
+      right:0;
+      bottom:0;
+      position:absolute;
+      -webkit-transform:rotateY(180deg);
+      transform:rotateY(180deg);
+      -webkit-backface-visibility:hidden;
+      backface-visibility:hidden;
+      -webkit-transition:all .4s linear;
+      transition:all .4s linear;
+    }
+
+    .login-html .for-file,
+    .login-html .for-pwd,
+    .login-html .for-url,
+    .login-form .group .check{
+      display:none;
+    }
+
+    .login-html .for-file:checked + .tab,
+    .login-html .for-pwd:checked + .tab,
+    .login-html .for-url:checked + .tab{
+      color:#3498db;
+      border-color:#1161ee;
+      font-size: 18px;
+      margin: 7px;
+      margin-left:20px;
+    }
+
+    .login-form{
+      min-height:345px;
+      position:relative;
+      -webkit-perspective:1000px;
+      perspective:1000px;
+      -webkit-transform-style:preserve-3d;
+      transform-style:preserve-3d;
+    }
+
+    .login-form .group .button{
+      width:100%;
+      color: #fff;
+      display:block;
+      border:none;
+      padding:15px 20px;
+      border-radius:25px;
+      background:#3498db;
+    }
+
+    .login-form .group .input{
+      width:100%;
+      display:block;
+      border:1px solid black;
+      padding:15px 20px;
+      border-radius:25px;
+      background:rgba(255,255,255,.1);
+    }
+
+    textarea{
+      border-color:rgba(12,13,13,.25);
+    }
+    .login-html .for-file:checked + .tab + .for-pwd + .tab + .for-url + .tab +.login-form .for-file-htm{
+      -webkit-transform:rotate(0);
+      transform:rotate(0);
+    }
+    .login-html .for-pwd:checked + .tab +  .for-url + .tab + .login-form .for-pwd-htm{
+      -webkit-transform:rotate(0);
+      transform:rotate(0);
+    }
+
+    .login-html .for-url:checked + .tab +  .login-form .for-url-htm{
+      -webkit-transform:rotate(0);
+      transform:rotate(0);
+    }
+  </style>
+</head>
+<body style="background-image:url('{{ url_for('static', filename='img/bg.jpg') }}')">
+   <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex align-items-center">
+      <div class="logo mr-auto">
+       <h1 class="text-light"><a href="{{ url_for('index') }}" style="text-shadow: 1px 1px 2px black;color:white;"><span>Entity Extractor</span></a></h1>
+      </div>
+      <nav class="nav-menu d-none d-lg-block">
+        <ul>
+          <li class="active"><a href="{{ url_for('index') }}" style="text-shadow: 1px 1px 2px black;color:white;font-size: 18px;">Acceuil</a></li>
+          <li><a href="{{ url_for('text') }}" style="text-shadow: 1px 1px 2px black;color:white;font-size: 18px;">Formulaire</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <section id="hero" class="d-flex align-items-center">
+    <div class="container">
+      <h1 class="text-center" style="text-shadow: 1px 1px 2px black;color:white;"> Choisissez votre source </h1>
+      <br><!--
+    <ul class="text-center" style="list-style: none;">
+      <li class="msg">{{ message }}</li>
+    </ul>--->
+    <div class="login-wrap" style="background-color:white;">
+      <div class="login-html">
+        <input id="tab-1" type="radio" name="tab" class="for-file" checked><label for="tab-1" class="tab">Upload de fichier</label>
+        <input id="tab-2" type="radio" name="tab" class="for-pwd"><label for="tab-2" class="tab">Texte Libre</label>
+        <input id="tab-3" type="radio" name="tab" class="for-url"><label for="tab-3" class="tab">URL</label>
+        <div class="login-form">
+          <div class="for-file-htm">
+            <form action="{{url_for('resultats')}}" method="post" enctype="multipart/form-data">
+              <div class="group">
+                <input type="file" class="input" style="margin-top: 15%;" name="file">
+              </div>
+              <div class="group">
+                <input type="submit" class="button" style="margin-top: 13%;" value="Analyser votre fichier">
+              </div>
+            </form>
+          </div>
+          <div class="for-pwd-htm">
+            <form action="{{url_for('resultats')}}" method="post">
+              <div class="group">
+                <textarea name="texte" rows="6" cols="48" style="margin-left:0;"></textarea>
+              </div>
+              <div class="group">
+                <input type="submit" class="button" value="Analyser votre texte">
+              </div>
+            </form>
+          </div>
+          <div class="for-url-htm">
+            <form action="{{url_for('resultats')}}" method="post">
+              <div class="group">
+                <input type="url" class="input" name="url" style="margin-top: 15%;" placeholder="https://exemple.com" />
+              </div>
+              <div class="group">
+                <input type="submit" class="button" style="margin-top: 13%;" value="Analyser votre URL">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+  <br><br><br><br>
+  <footer id="footer">
+    <div class="container">
+      <div class="row d-flex align-items-center">
+        <div class="col-lg-12 text-center">
+          <div class="copyright">
+            © Copyright <strong>Entity Extractor</strong>. Tous les droits sont réservés
+          </div>
+          <div class="credits">
+            Conçu par <a href="https://anatoleaze.fr/"><strong>Anatole Aze</strong></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+  <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/aos.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
