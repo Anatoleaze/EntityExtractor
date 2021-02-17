@@ -7,7 +7,7 @@ import requests
 
 class Work:
     def __init__(self):
-        self.nlp=spacy.load("fr_core_news_lg")#fr_core_news_sm
+        self.nlp=spacy.load("fr_core_news_md")
         self.txt=""
         
     def getContentURL(self,url):
