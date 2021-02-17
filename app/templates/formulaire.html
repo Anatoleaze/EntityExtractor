@@ -84,11 +84,11 @@
     .login-html .for-file:checked + .tab,
     .login-html .for-pwd:checked + .tab,
     .login-html .for-url:checked + .tab{
-      color:#3498db;
-      border-color:#1161ee;
+      color:black;
       font-size: 18px;
       margin: 7px;
       margin-left:20px;
+      text-shadow: 1px 1px 2px black;
     }
 
     .login-form{
@@ -145,7 +145,7 @@
       </div>
       <nav class="nav-menu d-none d-lg-block">
         <ul>
-          <li class="active"><a href="{{ url_for('index') }}" style="text-shadow: 1px 1px 2px black;color:white;font-size: 18px;">Acceuil</a></li>
+          <li class="active"><a href="{{ url_for('index') }}" style="text-shadow: 1px 1px 2px black;color:white;font-size: 18px;">Accueil</a></li>
           <li><a href="{{ url_for('text') }}" style="text-shadow: 1px 1px 2px black;color:white;font-size: 18px;">Formulaire</a></li>
         </ul>
       </nav>
