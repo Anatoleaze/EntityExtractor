@@ -33,29 +33,28 @@ Ce projet m'a permis de renforcer mes compétences en développement web et en t
 
 ### Étapes d'installation
 
-1. **Cloner le dépôt :**
+#### 1. **Cloner le dépôt :**
 
 ```bash
    git clone https://github.com/Anatoleaze/EntityExtractor.git
    cd EntityExtractor
 ```
 
-2 .Construire l’image Docker :
+#### 2. **Construire l’image Docker :**
 
 ```bash
    docker build -t entity-extractor .
 ```
 
-3. Lancer le conteneur :
+#### 3. **Lancer le conteneur :**
 
 ```bash
    docker run -p 5000:5000 entity-extractor
 ```
 
-4.Accéder à l'application :
+#### 4. **Accéder à l'application :**
 
 Ouvrir votre navigateur à l’adresse : http://localhost:5000
-
 
 ### 📄 Licence
 
