@@ -1,6 +1,6 @@
 # Entity Extractor
 
-Entity Extractor est une application web conçue pour extraire et analyser les entités nommées à partir d’un texte libre ou d’une URL. Le projet repose sur le framework **Django** pour la partie web et **Spacy** pour l’analyse linguistique.
+Entity Extractor est une application web conçue pour extraire et analyser les entités nommées à partir d’un texte libre ou d’une URL. Le projet repose sur le framework **Flask** pour la partie web et **Spacy** pour l’analyse linguistique.
 
 ## 🌟 À propos du projet
 
