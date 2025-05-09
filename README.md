@@ -7,7 +7,7 @@ Entity Extractor est une application web conçue pour extraire et analyser les e
 Ce projet passionnant consistait à récupérer et analyser les entités nommées d’un texte. Pour cela, j'ai utilisé :
 
 - **Python** pour l’analyse de texte,
-- **Django** pour créer une interface web conviviale,
+- **Flask** pour créer une interface web conviviale,
 - **Spacy** pour l’extraction des entités nommées (personnes, entreprises, lieux, etc.),
 - Des **algorithmes personnalisés** pour identifier des entités spécifiques selon les besoins.
 
@@ -21,7 +21,7 @@ Ce projet m'a permis de renforcer mes compétences en développement web et en t
 ## 🧰 Technologies utilisées
 
 - Python 3.9
-- Django
+- Flask
 - Spacy
 - Docker
 
